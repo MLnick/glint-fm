@@ -246,16 +246,16 @@ object GlintFM extends LazyLogging {
           val cols = new Array[Int](localVDim * k)
           val values = new Array[Double](localVDim * k)
 
-          var k = 0
+          var uk = 0
           var i = 0
           while (i < localVDim) {
             val idx = keys(i)
             var j = 0
             while (j <  k) {
-              values(k) = -step * (gradV(i, j) / scale + vRegParam * V(i, j))
-              rows(k) = idx
-              cols(k) = j
-              k += 1
+              values(uk) = -step * (gradV(i, j) / scale + vRegParam * V(i, j))
+              rows(uk) = idx
+              cols(uk) = j
+              uk += 1
               j += 1
             }
             i += 1
